@@ -1,9 +1,6 @@
-// Internal Libraries
-import { StyleSheet, View } from 'react-native';
-import { useContext } from 'react';
-
 // External Libraries
 import { useFonts } from 'expo-font';
+import { NavigationContainer } from '@react-navigation/native';
 
 // Components
 import { StatusBar } from './components';
@@ -33,10 +30,10 @@ const App = () => {
 
   return (
     <AuthProvider>
-      <>
+      <NavigationContainer>
         <StatusBar/>
         <Routes />
-      </>
+      </NavigationContainer>
     </AuthProvider>
   );
 }
