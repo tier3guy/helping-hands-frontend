@@ -1,5 +1,10 @@
-import React from 'react';
-import { Text } from 'react-native';
+// Screens
+import { LoginScreen, SignupScreen } from '../screens';
+
+// Navigation
+import ScreenOptions from '../globals/StackScreenOptions';
+import { createStackNavigator } from '@react-navigation/stack';
+const Stack = createStackNavigator();
 
 /**
  * 
@@ -7,7 +12,10 @@ import { Text } from 'react-native';
  */
 const AuthRoutes = () => {
   return (
-    <Text>AuthRoutes</Text>
+    <Stack.Navigator screenOptions={ScreenOptions}>
+      <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="Signup" component={SignupScreen} />
+    </Stack.Navigator>
   )
 }
 
