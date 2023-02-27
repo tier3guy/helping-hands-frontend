@@ -2,3 +2,8 @@ export { default as StatusBar } from './StatusBar';
 export { default as InterText } from './Text/InterText';
 export { default as GloockText } from './Text/GloockText';
 export { default as ScrollView } from './ScrollView';
+export { default as View } from './View';
+export { default as Input } from './Input';
+export { default as Icons } from './Icons';
+export { default as PrimaryButton } from './Button/PrimaryButton';
+export { default as SecondaryButton } from './Button/SecondaryButton';

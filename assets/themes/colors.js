@@ -5,6 +5,8 @@ const colors = {
     dark: {
         dark: '#20262E',
         light: '#FFFFFF',
+        yellow: '#FFA500',
+        orange: '#F15412'
     }
 }
 

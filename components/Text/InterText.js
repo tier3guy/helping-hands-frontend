@@ -3,7 +3,7 @@ import colors from '../../assets/themes/colors';
 
 const InterText = ({children, style, ...props}) => {
     return (
-        <Text style={[styles.interText, style]} {...props}>
+        <Text style={[styles.interText, { fontSize: props.size ? props.size : 18 }, style]} {...props}>
             {children || props.text}
         </Text>
     );
@@ -16,5 +16,6 @@ const styles = StyleSheet.create({
         fontFamily: 'Inter-Regular',
         fontSize: 20,
         color: colors.dark.light,
+        // textAlign: 'center',
     },
 });

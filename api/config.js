@@ -11,9 +11,9 @@ export const MODE = 'development';
  * @description - This is the API URL of the app.
  * @type {String}
  * @constant
- * @default - 'http://localhost:3000/api'
- * @permissbleValues - 'http://localhost:3000/api' | 'https://gloock.herokuapp.com/api'
+ * @default - 'http://localhost:8001/api'
+ * @restrictions - Do not change this value unless you know what you are doing.
  */
-export const TEST_API_URL = 'http://localhost:3000/api';
-export const PROD_API_URL = 'https://gloock.herokuapp.com/api';
+export const TEST_API_URL = 'http://localhost:8001/';
+export const PROD_API_URL = 'https://helping-hands-server-drab.vercel.app/';
 
