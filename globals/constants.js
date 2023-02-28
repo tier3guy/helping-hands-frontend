@@ -1,1 +1,1 @@
-export const ASYNC_STORAGE_ACCESS_KEY = "@usha_access_key";
+export const ASYNC_STORAGE_ACCESS_KEY = "@credit_wizard_async_storgae_access_token";

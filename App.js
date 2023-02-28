@@ -7,6 +7,10 @@ import { StatusBar } from './components';
 import AuthProvider from './context/authContext';
 import Routes from './navigation/routes';
 
+// Ignoring Yellow Warnings
+// import { LogBox } from 'react-native';
+// LogBox.ignoreAllLogs();
+
 const App = () => {
 
   const [fontsLoaded] = useFonts({

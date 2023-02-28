@@ -35,7 +35,7 @@ export const SignupFunction = async (data, setErrorMessages, setUser) => {
             };
             if(data.status === 'success'){
                 setUser(data.result);
-                AsyncStorage.setItem(ASYNC_STORAGE_ACCESS_KEY, data.result);
+                AsyncStorage.setItem(ASYNC_STORAGE_ACCESS_KEY, JSON.stringify(data.result));
                 return;
             }
             console.log(data);
@@ -78,7 +78,7 @@ export const LoginFunction = (data, setErrorMessages, setUser) => {
         };
         if(data.status === 'success'){
             setUser(data.result);
-            AsyncStorage.setItem(ASYNC_STORAGE_ACCESS_KEY, data.result);
+            AsyncStorage.setItem(ASYNC_STORAGE_ACCESS_KEY, JSON.stringify(data.result));
             return;
         }
         return data;
