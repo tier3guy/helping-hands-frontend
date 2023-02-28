@@ -7,7 +7,6 @@ import { StatusBar } from './components';
 import AuthProvider from './context/authContext';
 import Routes from './navigation/routes';
 
-
 const App = () => {
 
   const [fontsLoaded] = useFonts({

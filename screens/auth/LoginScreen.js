@@ -7,14 +7,52 @@ import {
   InterText,
   Input,
   PrimaryButton,
-  SecondaryButton
 } from '../../components';
-
 
 // Styles
 import colors from '../../assets/themes/colors';
 
-const LoginScreen = () => {
+// Api Services
+import { LoginFunction } from '../../api';
+
+// Contexts
+import { useAuth } from '../../context/authContext';
+
+const LoginScreen = ({navigation}) => {
+
+  const [errorMessages, setErrorMessages] = React.useState(null);
+  const [emailOrPhone, setEmailOrPhone] = React.useState('');
+  const [password, setPassword] = React.useState('');
+
+  const { user, setUser } = useAuth();
+
+  const LoginHandler = () => {
+
+    if(emailOrPhone === ''){
+      setErrorMessages('Email or Phone is required');
+      return;
+    }
+
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    const phoneRegex = /^[0-9]{10}$/;
+
+    if(!emailRegex.test(emailOrPhone) && !phoneRegex.test(emailOrPhone)){
+      setErrorMessages('Email or Phone is invalid');
+      return;
+    }
+
+    if(password === ''){
+      setErrorMessages('Password is required');
+      return;
+    }
+
+    LoginFunction({ emailOrPhone, password }, setErrorMessages, setUser);
+  };
+
+  const goToSignup = () => {
+    navigation.navigate('Signup');
+  };
+
   return (
     <View style={styles.container}>
       
@@ -24,8 +62,19 @@ const LoginScreen = () => {
       </View>
 
       <View style={[styles.w100, styles.inputContainer]}>
-        <Input placeholder="Email / Phone" icon="alternate-email" />
-        <Input placeholder="Password" icon="lock" eye />
+        <Input 
+          placeholder="Email / Phone" 
+          icon="alternate-email" 
+          value={emailOrPhone}
+          onChangeText={(text) => setEmailOrPhone(text)}
+          />
+        <Input 
+          placeholder="Password" 
+          icon="lock" 
+          value={password}
+          onChangeText={(text) => setPassword(text)}
+          eye 
+        />
       </View>
 
       <TouchableOpacity style={[styles.w100]}>
@@ -36,8 +85,28 @@ const LoginScreen = () => {
         <PrimaryButton
           label="Login"
           icon="paper-plane"
+          onPress={LoginHandler}
         />
       </View>
+
+      <View style={[styles.w100, styles.errorBox]}>
+        {
+          errorMessages && 
+          <InterText 
+            size={14} 
+            style={{ color: colors.dark.danger }}
+          >
+            {errorMessages}
+          </InterText>
+        }
+      </View>
+
+      <TouchableOpacity 
+        style={[styles.w100, styles.bottomButton]}
+        onPress={goToSignup}
+      >
+        <InterText size={14}>Don't have an account ?</InterText>
+      </TouchableOpacity>
     </View>
   )
 }
@@ -69,6 +138,15 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     marginVertical: 20,
+  },
+  bottomButton: {
+    position: 'absolute',
+    bottom: 20,
+  },
+  errorBox: {
+    height: 30,
+    alignItems: 'center',
+    // justifyContent: 'center',
   }
 });
 

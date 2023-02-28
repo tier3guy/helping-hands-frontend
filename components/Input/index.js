@@ -44,6 +44,7 @@ const RNInput = (props) => {
                 placeholderTextColor={colors.dark.light} 
                 {...rest} 
                 secureTextEntry={eye && toggleSecure}
+                cursorColor={colors.dark.light}
             />
             {
                 eye && <Icon

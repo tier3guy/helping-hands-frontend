@@ -16,10 +16,10 @@ const RNStatusBar = ({mode}) => {
                          : "light-content";
 
     return <StatusBar 
-            animated={true}
-            backgroundColor={backgroundColor}
-            barStyle={barStyle}
-        />
+                animated={true}
+                backgroundColor={backgroundColor}
+                barStyle={barStyle}
+            />
 }
 
 export default RNStatusBar;
