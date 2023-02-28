@@ -1,11 +1,15 @@
 import { ScrollView } from 'react-native';
 
-const RNScrollView = ({children, props, horizontalIndicator, verticalIndicator}) => {
+const RNScrollView = ({children, props}) => {
     return (
         <ScrollView
+            showsHorizontalScrollIndicator={props?.horizontalIndicator ? true : false}
+            showsVerticalScrollIndicator={props?.verticalIndicator ? true : false}
+            style={{
+                width: '100%',
+                ...props?.style,
+            }}
             {...props}
-            showsHorizontalScrollIndicator={horizontalIndicator ? true : false}
-            showsVerticalScrollIndicator={verticalIndicator ? true : false}
         >
             {children}
         </ScrollView>

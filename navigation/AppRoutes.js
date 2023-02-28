@@ -1,5 +1,11 @@
-import React from 'react';
-import { Text } from 'react-native';
+// Screens
+import { HomeScreen } from '../screens';
+
+
+// Navigation
+import { createStackNavigator } from '@react-navigation/stack';
+const Stack = createStackNavigator();
+
 
 /**
  * 
@@ -7,7 +13,13 @@ import { Text } from 'react-native';
  */
 const AppRoutes = () => {
   return (
-    <Text>AppRoutes</Text>
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen name="Home" component={HomeScreen} />
+    </Stack.Navigator>
   )
 }
 

@@ -11,7 +11,12 @@ import AuthRoutes from './AuthRoutes';
  * @returns {JSX.Element} - Returns the routes for the app
  */
 const Routes = () => {
-    const { user } = useAuth();
+    const { user, userLoginLoader } = useAuth();
+
+    if(userLoginLoader){
+        return null;
+    }
+
     return (
         <>
             {user ? <AppRoutes/> : <AuthRoutes/>}
