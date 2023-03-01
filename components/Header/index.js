@@ -18,9 +18,10 @@ const Header = (props) => {
         searchBar, 
         searchValue,
         onSearchValueChange,
-        settingsButton,
+        button,
         onIconPress,
-        ...rest 
+        icon,
+        iconSize,
     } = props;
 
     return (
@@ -32,10 +33,10 @@ const Header = (props) => {
                     { title || "Header" }
                 </InterText>
                 {
-                    settingsButton && (
+                    button && (
                         <Icon 
-                            name="settings"
-                            size={20}
+                            name={icon || "settings"}
+                            size={iconSize || 20}
                             color={colors.dark.light}
                             onPress={onIconPress ? onIconPress : () => {}}
                         />

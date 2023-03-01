@@ -16,7 +16,7 @@ import Icon from '../Icons';
  */
 const RNInput = (props) => {
     
-    const { style, icon, eye, containerStyle, ...rest } = props;
+    const { style, icon, eye, containerStyle, placeholderTextColor, ...rest } = props;
 
     /**
      * @description Toggle Secure Text Entry
@@ -41,7 +41,7 @@ const RNInput = (props) => {
             }
             <TextInput 
                 style={[styles.input, style]}
-                placeholderTextColor={colors.dark.light} 
+                placeholderTextColor={placeholderTextColor || colors.dark.light} 
                 {...rest} 
                 secureTextEntry={eye && toggleSecure}
                 cursorColor={colors.dark.light}

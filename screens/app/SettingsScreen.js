@@ -1,6 +1,6 @@
 // Internal Libraries
 import React, { useState } from 'react';
-import { StyleSheet, TouchableOpacity, View, Switch } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 // Styles
 import colors from '../../assets/themes/colors';
@@ -8,12 +8,12 @@ import colors from '../../assets/themes/colors';
 // Components
 import {
     Header,
-    InterText,
     ScrollView,
     ProfileCard,
     SecondaryButton,
     PrimaryButton,
-    TextButton
+    TextButton,
+    AddEmailCard
 } from '../../components';
 
 // Contexts
@@ -26,19 +26,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 // Global 
 import { ASYNC_STORAGE_ACCESS_KEY } from '../../globals/constants';
 
-const AddEmailCard = () => {
-    return (
-        <View style={[styles.w100]}>
-            <InterText style={[styles.text, { width: '98%', alignSelf: 'center' }]}>
-                You haven't added your email yet. Please add your email to get notified when we have any update for you.
-            </InterText> 
-            <TextButton
-                label="@ Add Email"
-                textStyle={styles.addEmailButton}
-            />
-        </View>
-    )
-}
 
 const SettingsScreen = ({ navigation }) => {
 
@@ -56,6 +43,10 @@ const SettingsScreen = ({ navigation }) => {
                 <Header
                     title="Settings"
                     navigation={navigation}
+                    button
+                    icon="keyboard-arrow-right"
+                    iconSize={30}
+                    onIconPress={() => navigation.goBack()}
                 />
                 <View style={[styles.w100, styles.wrapper]}>
                     <View style={[styles.w100, styles.profileCardContainer]}>
@@ -69,6 +60,7 @@ const SettingsScreen = ({ navigation }) => {
                             style={{
                                 marginTop: 20
                             }}
+                            onPress={() => navigation.navigate('UpdateProfile')}
                         />
                     </View>
                     <View style={[styles.w100, styles.switchContainer]}>
@@ -119,10 +111,6 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         color: colors.dark.gray,
         fontSize: 15
-    },
-    addEmailButton: {
-        color: colors.dark.orange,
-        marginTop: 20,
     },
     wrapper: {
         marginVertical: 20,

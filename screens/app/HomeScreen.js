@@ -38,7 +38,7 @@ const HomeScreen = ({ navigation }) => {
                     title="Chat History"
                     navigation={navigation}
                     searchBar
-                    settingsButton
+                    button
                     onIconPress={() => navigation.navigate('Settings')}
                 />
                 <View

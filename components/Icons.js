@@ -6,6 +6,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Octicons from 'react-native-vector-icons/Octicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const Icon = (props) => {
     const { name } = props;
@@ -31,6 +32,16 @@ const Icon = (props) => {
             return <Octicons {...props} />;
         case 'bell-slash':
             return <Octicons {...props} />;
+        case 'keyboard-arrow-down':
+            return <MaterialIcons {...props} />;
+        case 'keyboard-arrow-up':
+            return <MaterialIcons {...props} />;
+        case 'keyboard-arrow-right':
+            return <MaterialIcons {...props} />;
+        case 'keyboard-arrow-left':
+            return <MaterialIcons {...props} />;
+        case 'genderless':
+            return <FontAwesome {...props} />;
         default:
             return <Feather {...props} />;
     }

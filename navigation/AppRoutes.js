@@ -1,5 +1,5 @@
 // Screens
-import { HomeScreen, SettingsScreen } from '../screens';
+import { HomeScreen, SettingsScreen, UpdateProfileScreen } from '../screens';
 
 // Navigation
 import { createStackNavigator } from '@react-navigation/stack';
@@ -23,6 +23,10 @@ const AppRoutes = () => {
       <Stack.Screen 
         name="Settings" 
         component={SettingsScreen} 
+      />
+      <Stack.Screen 
+        name="UpdateProfile" 
+        component={UpdateProfileScreen} 
       />
     </Stack.Navigator>
   )

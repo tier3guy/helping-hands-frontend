@@ -1,6 +1,8 @@
 // External Libraries
 import { useFonts } from 'expo-font';
 import { NavigationContainer } from '@react-navigation/native';
+// import * as Device from 'expo-device';
+// import * as Notifications from 'expo-notifications';
 
 // Components
 import { StatusBar } from './components';

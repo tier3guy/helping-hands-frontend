@@ -11,3 +11,4 @@ export { default as SecondaryButton } from './Button/SecondaryButton';
 export { default as TextButton } from './Button/TextButton';
 export { default as Header } from './Header';
 export { default as ProfileCard } from './ProfileCard';
+export { default as AddEmailCard } from './AddEmail';
