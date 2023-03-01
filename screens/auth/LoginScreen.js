@@ -7,6 +7,7 @@ import {
   InterText,
   Input,
   PrimaryButton,
+  Loader
 } from '../../components';
 
 // Styles
@@ -24,7 +25,7 @@ const LoginScreen = ({navigation}) => {
   const [emailOrPhone, setEmailOrPhone] = React.useState('');
   const [password, setPassword] = React.useState('');
 
-  const { user, setUser } = useAuth();
+  const { setUser, loader, setLoader } = useAuth();
 
   const LoginHandler = () => {
 
@@ -45,8 +46,8 @@ const LoginScreen = ({navigation}) => {
       setErrorMessages('Password is required');
       return;
     }
-
-    LoginFunction({ emailOrPhone, password }, setErrorMessages, setUser);
+    
+    LoginFunction({ emailOrPhone, password }, setErrorMessages, setUser, setLoader);
   };
 
   const goToSignup = () => {
@@ -107,6 +108,8 @@ const LoginScreen = ({navigation}) => {
       >
         <InterText size={14}>Don't have an account ?</InterText>
       </TouchableOpacity>
+
+      <Loader loading={loader} />
     </View>
   )
 }

@@ -5,6 +5,7 @@ export { default as ScrollView } from './ScrollView';
 export { default as View } from './View';
 export { default as Input } from './Input';
 export { default as Icons } from './Icons';
+export { default as Loader } from './Loader';
 export { default as PrimaryButton } from './Button/PrimaryButton';
 export { default as SecondaryButton } from './Button/SecondaryButton';
 export { default as TextButton } from './Button/TextButton';

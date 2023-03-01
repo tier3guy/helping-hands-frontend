@@ -14,6 +14,8 @@ const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
     const [userLoginLoader, setUserLoginLoader] = useState(true);
+    const [loader, setLoader] = useState(false);
+
 
     const getUser = async () => {
         try{
@@ -32,7 +34,7 @@ const AuthProvider = ({ children }) => {
     }, []);
 
     return (
-        <AuthContext.Provider value={{user, setUser, userLoginLoader}}>
+        <AuthContext.Provider value={{user, setUser, userLoginLoader, loader, setLoader}}>
             {children}
         </AuthContext.Provider>
     );

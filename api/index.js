@@ -7,9 +7,11 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const API_URL = MODE === 'development' ? TEST_API_URL : PROD_API_URL;
 
-export const SignupFunction = async (data, setErrorMessages, setUser) => {
+export const SignupFunction = async (data, setErrorMessages, setUser, setLoader) => {
     
         const { fullName, email, phone, password } = data;
+
+        setLoader(true);
     
         fetch(`${API_URL}/signup`, {
             method: 'POST',
@@ -27,21 +29,24 @@ export const SignupFunction = async (data, setErrorMessages, setUser) => {
         .then((data) => {
             if(data.status === 'failed' && data.result === 'Email already exists'){
                 setErrorMessages('Email already exists');
+                setLoader(false);
                 return;
             };
             if(data.status === 'failed' && data.result === 'Phone already exists'){
                 setErrorMessages('Phone already exists');
+                setLoader(false);
                 return;
             };
             if(data.status === 'success'){
                 setUser(data.result);
+                setLoader(false);
                 AsyncStorage.setItem(ASYNC_STORAGE_ACCESS_KEY, JSON.stringify(data.result));
                 return;
             }
-            console.log(data);
             return data;
         })
         .catch((error) => {
+            setLoader(false);
             return {
                 status: 'failed',
                 result: error
@@ -49,8 +54,9 @@ export const SignupFunction = async (data, setErrorMessages, setUser) => {
         })
 };
 
-export const LoginFunction = (data, setErrorMessages, setUser) => {
+export const LoginFunction = (data, setErrorMessages, setUser, setLoader) => {
 
+    setLoader(true);
 
     const { emailOrPhone, password } = data;
     const isEmail = emailOrPhone.includes('@');
@@ -70,20 +76,24 @@ export const LoginFunction = (data, setErrorMessages, setUser) => {
     .then((data) => {
         if(data.status === 'failed' && data.result === 'Wrong password'){
             setErrorMessages('Either email or password is invalid');
+            setLoader(false);
             return;
         };
         if(data.status === 'failed' && data.result === 'No result found'){
             setErrorMessages('User is not registered');
+            setLoader(false);
             return;
         };
         if(data.status === 'success'){
             setUser(data.result);
             AsyncStorage.setItem(ASYNC_STORAGE_ACCESS_KEY, JSON.stringify(data.result));
+            setLoader(false);
             return;
         }
         return data;
     })
     .catch((error) => {
+        setLoader(false);
         return {
             status: 'failed',
             result: error
