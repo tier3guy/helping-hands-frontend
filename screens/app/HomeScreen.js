@@ -39,6 +39,7 @@ const HomeScreen = ({ navigation }) => {
                     navigation={navigation}
                     searchBar
                     settingsButton
+                    onIconPress={() => navigation.navigate('Settings')}
                 />
                 <View
                     style={[styles.chatContainer]}
@@ -78,7 +79,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     text: {
-        color: colors.dark.light,
+        color: "gray" || colors.dark.light,
         textAlign: 'center',
         marginTop: -100,
         fontSize: 14,

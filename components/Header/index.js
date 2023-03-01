@@ -19,6 +19,7 @@ const Header = (props) => {
         searchValue,
         onSearchValueChange,
         settingsButton,
+        onIconPress,
         ...rest 
     } = props;
 
@@ -36,7 +37,7 @@ const Header = (props) => {
                             name="settings"
                             size={20}
                             color={colors.dark.light}
-                            onPress={() => navigation.navigate('Settings')}
+                            onPress={onIconPress ? onIconPress : () => {}}
                         />
                     )
                 }

@@ -2,9 +2,12 @@
 import { LoginScreen, SignupScreen } from '../screens';
 
 // Navigation
-import ScreenOptions from '../globals/StackScreenOptions';
 import { createStackNavigator } from '@react-navigation/stack';
 const Stack = createStackNavigator();
+
+// Globals
+import ScreenOptions from '../globals/StackScreenOptions';
+
 
 /**
  * 

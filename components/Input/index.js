@@ -64,7 +64,7 @@ const RNInput = (props) => {
 const styles = StyleSheet.create({
     body:{
         paddingHorizontal: 15,
-        backgroundColor: "gray",
+        backgroundColor: colors.dark.gray,
         borderRadius: 5,
         elevation: 2,
         flexDirection: 'row',

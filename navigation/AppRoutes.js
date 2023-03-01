@@ -1,10 +1,12 @@
 // Screens
-import { HomeScreen } from '../screens';
-
+import { HomeScreen, SettingsScreen } from '../screens';
 
 // Navigation
 import { createStackNavigator } from '@react-navigation/stack';
 const Stack = createStackNavigator();
+
+// Global
+import ScreenOptions from '../globals/StackScreenOptions';
 
 
 /**
@@ -13,12 +15,15 @@ const Stack = createStackNavigator();
  */
 const AppRoutes = () => {
   return (
-    <Stack.Navigator
-      screenOptions={{
-        headerShown: false,
-      }}
-    >
-      <Stack.Screen name="Home" component={HomeScreen} />
+    <Stack.Navigator screenOptions={ScreenOptions}>
+      <Stack.Screen 
+        name="Home" 
+        component={HomeScreen} 
+      />
+      <Stack.Screen 
+        name="Settings" 
+        component={SettingsScreen} 
+      />
     </Stack.Navigator>
   )
 }

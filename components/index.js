@@ -7,4 +7,6 @@ export { default as Input } from './Input';
 export { default as Icons } from './Icons';
 export { default as PrimaryButton } from './Button/PrimaryButton';
 export { default as SecondaryButton } from './Button/SecondaryButton';
+export { default as TextButton } from './Button/TextButton';
 export { default as Header } from './Header';
+export { default as ProfileCard } from './ProfileCard';
