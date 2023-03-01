@@ -101,11 +101,11 @@ export const LoginFunction = (data, setErrorMessages, setUser, setLoader) => {
     })
 };
 
-export const LogoutFunction = async () => {};
-
 export const ResetPasswordFunction = async (data) => {};
 
 export const UpdatePasswordFunction = async (data) => {};
 
-export const UpdateProfileFunction = async (data) => {};
+export const UpdateProfileFunction = async (data, setErrorMessages, setUser, setLoader) => {
+    
+};
 

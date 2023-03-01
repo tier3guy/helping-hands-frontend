@@ -8,15 +8,21 @@ import colors from '../../assets/themes/colors';
 import InterText from '../Text/InterText';
 import TextButton from '../Button/TextButton';
 
-const AddEmailCard = () => {
+const AddEmailCard = ({onPress, label, message, navigation}) => {
+
     return (
-        <View style={[styles.w100]}>
+        <View 
+            style={[styles.w100]}
+        >
             <InterText style={[styles.text, { width: '98%', alignSelf: 'center' }]}>
-                It seems you haven't added your email yet. Please add your email to get notified when we have any update for you.
+                {
+                    message ? message : "It seems you haven't added your email yet. Please add your email to get notified when we have any update for you."
+                }
             </InterText> 
             <TextButton
-                label="@ Add Email"
+                label={label ? label : "@ Add Email"}
                 textStyle={styles.addEmailButton}
+                onPress={onPress ? onPress : () => navigation.navigate("UpdateEmail")}
             />
         </View>
     )

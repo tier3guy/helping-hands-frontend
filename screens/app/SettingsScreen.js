@@ -52,7 +52,7 @@ const SettingsScreen = ({ navigation }) => {
                     <View style={[styles.w100, styles.profileCardContainer]}>
                         <ProfileCard />
                         {
-                            !(user?.email) ? <AddEmailCard/> : null
+                            !(user?.email) ? <AddEmailCard navigation={navigation} /> : null
                         }
                         <SecondaryButton
                             label="Update Profile"

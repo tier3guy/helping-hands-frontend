@@ -14,6 +14,7 @@ const TextButton = (props) => {
     return (
         <TouchableOpacity
             style={[styles.wrapper, buttonStyle]}
+            onPress={onPress}
         >
             <InterText style={[styles.text, textStyle]}>
                 {props.label}

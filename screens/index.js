@@ -8,3 +8,4 @@ export { default as SignupScreen } from './auth/SignupScreen';
 export { default as HomeScreen } from './app/HomeScreen';
 export { default as SettingsScreen } from './app/SettingsScreen';
 export { default as UpdateProfileScreen } from './app/UpdateProfileScreen';
+export { default as EmailAuthenticationScreen } from './app/EmailAuthenticationScreen';
