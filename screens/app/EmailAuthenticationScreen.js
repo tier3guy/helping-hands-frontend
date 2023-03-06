@@ -18,28 +18,31 @@ import {
 // Contexts
 import { useAuth } from '../../context/authContext';
 
+// APIs
+import { sendOtpFunction } from '../../api';
+
 
 const EmailAuthenticationScreen = ({ navigation }) => {
 
-    const { user, setUser, loader, setLoader } = useAuth();
+    const { user, loader, setLoader } = useAuth();
 
     const [error, setError] = useState(null);
     const [email, setEmail] = useState("");
+    const [otp, setOtp] = useState("");
 
 
-    const UpdateEmailHandler = () => {
+    const UpdateEmailHandler = async () => {
 
         if(email === "") {
             setError("Please enter an email");
             return;
         }
-
         if(!email.includes("@")) {
             setError("Please enter a valid email");
             return;
         }
 
-        navigation.navigate("OtpScreen", { email });
+        sendOtpFunction({ email, setLoader, setError, navigation, setOtp, otp });
     }
 
     return (

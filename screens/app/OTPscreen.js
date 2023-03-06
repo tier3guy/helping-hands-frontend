@@ -18,18 +18,30 @@ import {
 // Contexts
 import { useAuth } from '../../context/authContext';
 
+// APIs
+import { verifyOtpFunction } from '../../api';
 
 const OTPScreen = ({ navigation, route }) => {
 
-    const { email } = route.params;
+    const { email, otp } = route.params;
     const { user, setUser, loader, setLoader } = useAuth();
 
     const [error, setError] = useState(null);
-    const [otp, setOtp] = useState("");
+    const [localOtp, setLocalOtp] = useState("");
 
 
     const OTPVerificationHandler = () => {
-
+            
+        if(localOtp === "") {
+            setError("Please enter an OTP");
+            return;
+        }
+        if(localOtp !== otp) {
+            setError("Please enter a valid OTP");
+            return;
+        }
+        const phone = user.phone;
+        verifyOtpFunction({ email, phone, setLoader, setError, navigation, setUser });
     }
 
     return (
@@ -49,18 +61,28 @@ const OTPScreen = ({ navigation, route }) => {
                     <InterText style={styles.textotp}>Enter the OTP sent to {email}</InterText>
                     <OtpInput
                         length={6}
-                        value={otp}
-                        setValue={setOtp}
+                        value={localOtp}
+                        setValue={setLocalOtp}
                         timer
                     />
+                    <View style={styles.errorContainer}>
+                        {
+                            error && <InterText style={styles.error}>{error}</InterText>
+                        }
+                    </View>
                 </View>
+
+                <PrimaryButton
+                    label="Verify"
+                    onPress={OTPVerificationHandler}
+                    // style={{
+                    //     marginTop: 20
+                    // }}
+                />
                 
             </ScrollView>
 
-            <PrimaryButton
-                label="Verify"
-                onPress={OTPVerificationHandler}
-            />
+
             
             <Loader loading={loader} />
         </View>

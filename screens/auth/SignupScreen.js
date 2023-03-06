@@ -17,7 +17,7 @@ import colors from '../../assets/themes/colors';
 const SignupScreen = ({navigation}) => {
 
   const [errorMessages, setErrorMessages] = React.useState(null);
-  const { user, setUser } = useAuth();
+  const { user, setUser, setLoader } = useAuth();
 
   // user data
   const [fullName, setFullName] = useState('');
@@ -60,7 +60,7 @@ const SignupScreen = ({navigation}) => {
       return;
     }
 
-    SignupFunction({ fullName, email, phone, password }, setErrorMessages, setUser);
+    SignupFunction({ fullName, email, phone, password }, setErrorMessages, setUser, setLoader);
     
   };
 
