@@ -1,6 +1,6 @@
 // Internal Libraries
 import { useState } from 'react';
-import { TextInput, View, StyleSheet } from 'react-native';
+import { TextInput, View, StyleSheet, TouchableOpacity } from 'react-native';
 
 // Styles
 import colors from '../../assets/themes/colors';
@@ -16,7 +16,7 @@ import Icon from '../Icons';
  */
 const RNInput = (props) => {
     
-    const { style, icon, eye, containerStyle, placeholderTextColor, ...rest } = props;
+    const { style, icon, eye, containerStyle, placeholderTextColor, sideButton, ...rest } = props;
 
     /**
      * @description Toggle Secure Text Entry
@@ -57,6 +57,18 @@ const RNInput = (props) => {
                             onPress={() => setToggleSecure(!toggleSecure)}
                         />
             }
+            {
+                sideButton && 
+                <View style={styles.sideButton}>
+                    <TouchableOpacity>
+                        <Icon
+                            name={sideButton.icon || 'keyboard-arrow-right'}
+                            size={20}
+                            color={colors.dark.light}
+                        />
+                    </TouchableOpacity>
+                </View>
+            }
         </View>
     );
 }
@@ -77,6 +89,10 @@ const styles = StyleSheet.create({
         flex: 1,
         height: 60,
     },
+    sideButton: {
+        justifyContent: 'center',
+        alignItems: 'center',
+    }
 });
 
 export default RNInput;

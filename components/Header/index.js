@@ -22,10 +22,11 @@ const Header = (props) => {
         onIconPress,
         icon,
         iconSize,
+        containerStyle
     } = props;
 
     return (
-        <View style={[styles.w100]}>
+        <View style={[styles.w100, containerStyle]}>
             <View style={styles.header}>
                 <InterText
                     style={[styles.text, textStyle]}

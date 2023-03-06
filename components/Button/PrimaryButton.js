@@ -8,7 +8,16 @@ import InterText from '../Text/InterText';
 
 const PrimaryButton = (props) => {
 
-    const { style, label, textStyle, onPress, icon, iconPosition, ...rest } = props;
+    const { 
+        style, 
+        label, 
+        textStyle, 
+        onPress, 
+        icon, 
+        iconPosition, 
+        labelShownFalse, 
+        ...rest 
+    } = props;
 
     return (
         <TouchableOpacity 
@@ -27,9 +36,12 @@ const PrimaryButton = (props) => {
                     }}
                 />
             }
-            <View>
-                <InterText style={textStyle}>{label || "Submit"}</InterText>
-            </View>
+            {
+                labelShownFalse ? null : 
+                <View>
+                    <InterText style={textStyle}>{label || "Submit"}</InterText>
+                </View>
+            }
             {
                 icon && iconPosition === "right" && 
                 <Icon 

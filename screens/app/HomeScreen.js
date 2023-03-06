@@ -54,6 +54,7 @@ const HomeScreen = ({ navigation }) => {
             >
                 <PrimaryButton
                     label="Start a new Conversation"
+                    onPress={() => navigation.navigate('ChatScreen')}
                 />
             </View>
         </View>

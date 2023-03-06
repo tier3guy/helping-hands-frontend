@@ -4,6 +4,8 @@ import {
   SettingsScreen, 
   UpdateProfileScreen,
   EmailAuthenticationScreen,
+  OTPScreen,
+  ChatScreen
 } from '../screens';
 
 // Navigation
@@ -36,6 +38,14 @@ const AppRoutes = () => {
       <Stack.Screen 
         name="UpdateEmail" 
         component={EmailAuthenticationScreen} 
+      />
+      <Stack.Screen 
+        name="OtpScreen" 
+        component={OTPScreen} 
+      />
+      <Stack.Screen 
+        name="ChatScreen" 
+        component={ChatScreen} 
       />
     </Stack.Navigator>
   )

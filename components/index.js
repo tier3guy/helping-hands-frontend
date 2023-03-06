@@ -12,3 +12,5 @@ export { default as TextButton } from './Button/TextButton';
 export { default as Header } from './Header';
 export { default as ProfileCard } from './ProfileCard';
 export { default as AddEmailCard } from './AddEmail';
+export { default as OtpInput } from './OtpInput';
+export { default as Timer } from './Time';

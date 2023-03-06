@@ -9,3 +9,5 @@ export { default as HomeScreen } from './app/HomeScreen';
 export { default as SettingsScreen } from './app/SettingsScreen';
 export { default as UpdateProfileScreen } from './app/UpdateProfileScreen';
 export { default as EmailAuthenticationScreen } from './app/EmailAuthenticationScreen';
+export { default as OTPScreen } from './app/OTPscreen';
+export { default as ChatScreen } from './app/ChatScreen';

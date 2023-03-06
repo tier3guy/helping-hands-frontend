@@ -7,7 +7,14 @@ import InterText from '../Text/InterText';
 
 const SecondaryButton = (props) => {
 
-    const { style, label, textStyle, onPress, ...rest } = props;
+    const { 
+        style, 
+        label, 
+        textStyle, 
+        onPress, 
+        labelShownFalse, 
+        ...rest 
+    } = props;
 
     return (
         <TouchableOpacity 
@@ -15,9 +22,12 @@ const SecondaryButton = (props) => {
             onPress={onPress ? onPress : () => {console.log("Button Pressed")}}
             {...rest}
         >
-            <View>
-                <InterText style={textStyle}>{label || "Submit"}</InterText>
-            </View>
+            {
+                labelShownFalse ? null : 
+                <View>
+                    <InterText style={textStyle}>{label || "Submit"}</InterText>
+                </View>
+            }
         </TouchableOpacity>
     )
 }

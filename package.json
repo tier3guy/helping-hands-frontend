@@ -19,6 +19,7 @@
     "react": "18.2.0",
     "react-native": "0.71.3",
     "react-native-svg": "^13.4.0",
+    "react-native-typing-animation": "^0.1.7",
     "react-native-vector-icons": "^9.2.0",
     "toggle-switch-react-native": "^3.3.0"
   },

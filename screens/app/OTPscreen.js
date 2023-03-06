@@ -11,7 +11,7 @@ import {
     Header,
     PrimaryButton,
     InterText,
-    Input,
+    OtpInput,
     Loader
 } from '../../components';
 
@@ -19,34 +19,25 @@ import {
 import { useAuth } from '../../context/authContext';
 
 
-const EmailAuthenticationScreen = ({ navigation }) => {
+const OTPScreen = ({ navigation, route }) => {
 
+    const { email } = route.params;
     const { user, setUser, loader, setLoader } = useAuth();
 
     const [error, setError] = useState(null);
-    const [email, setEmail] = useState("");
+    const [otp, setOtp] = useState("");
 
 
-    const UpdateEmailHandler = () => {
+    const OTPVerificationHandler = () => {
 
-        if(email === "") {
-            setError("Please enter an email");
-            return;
-        }
-
-        if(!email.includes("@")) {
-            setError("Please enter a valid email");
-            return;
-        }
-
-        navigation.navigate("OtpScreen", { email });
     }
 
     return (
         <View style={[styles.w100, styles.container]}>
             <ScrollView>
+
                 <Header 
-                    title="Email Authentication"
+                    title="OTP Verification"
                     navigation={navigation}
                     button
                     icon="keyboard-arrow-right"
@@ -54,34 +45,23 @@ const EmailAuthenticationScreen = ({ navigation }) => {
                     onIconPress={() => navigation.goBack()}
                 />
 
-                <View style={[styles.w100, styles.inputContainer]}>
-                    {
-                        <InterText style={styles.text}>UID: {user?._id}</InterText>
-                    }
-                    <Input
-                        label="Email"
-                        placeholder={"Enter your email"}
-                        icon="mail"
-                        value={email}
-                        onChangeText={setEmail}
+                <View style={styles.inputContainer}>
+                    <InterText style={styles.textotp}>Enter the OTP sent to {email}</InterText>
+                    <OtpInput
+                        length={6}
+                        value={otp}
+                        setValue={setOtp}
+                        timer
                     />
                 </View>
-
-                <PrimaryButton
-                    label="Add Email"
-                    onPress={UpdateEmailHandler}
-                />
-
-                <View style={[styles.w100, styles.errorContainer]}>
-                    {
-                        error && <InterText style={[styles.error]}>{error}</InterText>
-                    }
-                </View>
-
-                <InterText style={[styles.text]}>You cannot update Email and Contact Number once given.</InterText>
-
+                
             </ScrollView>
-            <InterText style={styles.text}>Version 1.0.0</InterText>
+
+            <PrimaryButton
+                label="Verify"
+                onPress={OTPVerificationHandler}
+            />
+            
             <Loader loading={loader} />
         </View>
     )
@@ -105,11 +85,18 @@ const styles = StyleSheet.create({
         color: "gray" || colors.dark.light,
         fontSize: 14,
     },
+    textotp: {
+        color: "gray" || colors.dark.light,
+        fontSize: 14,
+        // textAlign: 'center',
+        // borderWidth: 1,
+        marginBottom: 20,
+    },
     inputContainer: {
         marginVertical: 10,
         marginTop: 30,
-        height: 100,
-        justifyContent: 'space-between',
+        // height: 100,
+        // justifyContent: 'space-between',
     },
     error: {
         color: colors.dark.danger,
@@ -123,4 +110,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default EmailAuthenticationScreen;
+export default OTPScreen;
